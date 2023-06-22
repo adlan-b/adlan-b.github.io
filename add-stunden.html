@@ -33,7 +33,7 @@
 
         submit.addEventListener("click", () => {
 
-            let datum = document.getElementById("datum").value;
+            let datum = document.getElementById("datum").value();
             let names = document.getElementById("names").value;
             let stunde = document.getElementById("stunde").value;
 
@@ -54,11 +54,12 @@
             }
 
             tg.sendData(JSON.stringify(data));
+            tg.close();
 
 
         });
 
-        tg.close();
+        
     </script>
 
 </body>
