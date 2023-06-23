@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <title>Document</title> 
+    <script src="https://telegram.org/js/telegram-web-app.js?1"></script>
+    <script>
+        function setThemeClass() {
+            document.documentElement.className = Telegram.WebApp.colorScheme;
+        }
+        Telegram.WebApp.onEvent('themeChanged', setThemeClass);
+        setThemeClass();
+    </script>
 </head>
 <body>
     <h2>Add Stunden</h2>
@@ -21,12 +27,12 @@
         <input type="text" id="names" name="names" required><br><br>
     
         <label for="stunde">Work Hours:</label>
-        <input type="number" id="stunde" name="stunde" min="0" step="0.5" required><br><br>
+        <input type="number" id="stunde" name="stunde" min="0" step="0.25 0.50 0.75" required><br><br>
         <button id="submit">Senden</button>
     </form>
     
     
-    <script>
+    <script type="application/javascript">
         let tg = window.Telegram.WebApp;
         let submit = document.getElementById("submit");
         tg.expand();
@@ -55,7 +61,6 @@
 
             tg.sendData(JSON.stringify(data));
             tg.close();
-
 
         });
 

@@ -3,13 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css" />
     <title>Document</title>
-    
+    <script src="https://telegram.org/js/telegram-web-app.js?1"></script>
+    <script>
+        function setThemeClass() {
+            document.documentElement.className = Telegram.WebApp.colorScheme;
+        }
+        Telegram.WebApp.onEvent('themeChanged', setThemeClass);
+        setThemeClass();
+    </script>
 </head>
 <body>
     <h2>Das ist mein html page</h2>
 
-   
+   <script type="application/javascript">
+    let tg = window.Telegram.WebApp;
+    tg.sendData("Niun");
+   </script>
     
 </body>
 </html>
