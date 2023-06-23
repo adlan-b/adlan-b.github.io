@@ -40,17 +40,18 @@
 
             if (datum.value == "" || names.value == "" || stunde == "") {
                 tg.sendData("Ensure you input a value in both fields!");
+                return;
             } else {
                 tg.sendData("This form has been successfully submitted!");
             }
 
             let data = {
-               datum: datum,
-               names: names,
-               stunde: stunde
+               datum: datum.value,
+               names: names.value,
+               stunde: stunde.value
             }
 
-            tg.sendData(datum+" "+names+" "+stunde);
+            tg.sendData(JSON.stringify(data));
             tg.close();
 
         });
