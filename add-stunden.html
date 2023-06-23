@@ -42,16 +42,17 @@
                 tg.sendData("Ensure you input a value in both fields!");
                 return;
             } else {
-                tg.sendData("This form has been successfully submitted!");
-            }
-
-            let data = {
+               let data = {
                datum: datum.value,
                names: names.value,
                stunde: stunde.value
+               }
+
+               tg.sendData(JSON.stringify(data));
+               tg.sendData("This form has been successfully submitted!");
             }
 
-            tg.sendData(JSON.stringify(data));
+            
             tg.close();
 
         });
