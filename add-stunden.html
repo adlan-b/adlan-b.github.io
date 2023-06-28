@@ -20,9 +20,9 @@
     <div id="error"></div>
 
     <form id="form">
-        <input type="date"  placeholder="Дата" id="datum">
-        <input type="text" placeholder="Имена" id="names">
-        <input type="number" placeholder="Часы" id="stunde" min="0" step="0.1">
+        <input type="date"  placeholder="Дата" id="datum" required>
+        <input type="text" placeholder="Имена" id="names" required>
+        <input type="number" placeholder="Часы" id="stunde" min="0" step=".01" required>
         <button id="senden">Senden</button>
     </form>
     
@@ -33,13 +33,11 @@
         tg.expand();
 
         senden.addEventListener("click", () => {
-
             let datum = document.getElementById('datum');
             let names = document.getElementById('names');
             let stunde = document.getElementById('stunde');
-
             if (datum.value == "" || names.value == "" || stunde == "") {
-                tg.sendData("Ensure you input a value in both fields!");
+                tg.sendData("Пожалуйста заполните все поля правильно!");
                 return;
             } else {
                let data = {
@@ -47,17 +45,10 @@
                names: names.value,
                stunde: stunde.value
                }
-
                tg.sendData(JSON.stringify(data));
-               tg.sendData("This form has been successfully submitted!");
             }
-
-            
             tg.close();
-
-        });
-
-        
+        });       
     </script>
 
 </body>
