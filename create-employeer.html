@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="style.css" />
+        <title>Employeer page</title>
+        <script src="https://telegram.org/js/telegram-web-app.js?1"></script>
+        <script>
+        function setThemeClass() {
+            document.documentElement.className = Telegram.WebApp.colorScheme;
+        }
+        Telegram.WebApp.onEvent('themeChanged', setThemeClass);
+        setThemeClass();
+    </script>
+    </head>
+    <body>
+
+        <form id="form">
+            <section>
+
+                <input type="text" placeholder="Имя" id="name" maxlength="30"
+                    required>
+                <label for="role"></label>
+                <select name="Roles" id="role" required>
+                    <option value>--Role--</option>
+                    <option value="admin">ADMIN</option>
+                    <option value="employeer">Employeer</option>
+                </select>
+
+                <button id="send">Senden</button>
+                <button id="reset" type="reset">Back</button>
+            </section>
+        </form>
+
+        <script type="application/javascript">
+        let tg = window.Telegram.WebApp;
+        let senden = document.getElementById("send");
+        tg.expand();
+
+        senden.addEventListener("click", () => {
+            let name = document.getElementById('name');
+            let role = document.getElementById('role');
+            if (name.value == "" || role.value == "") {
+                tg.sendData("Пожалуйста заполните все поля правильно!");
+                return;
+            } else {
+               let empData = {
+               name: name.value,
+               role: role.value,
+               }
+               tg.sendData(JSON.stringify(empData));
+            }
+            tg.close();
+        });       
+        </script>
+
+    </body>
+</html>
