@@ -16,9 +16,8 @@
     </head>
     <body>
 
-        <form id="form">
+        <form id="form" onsubmit=return validateForm()>
             <section>
-
                 <input type="text" placeholder="Имя" id="name" maxlength="30"
                     required>
                 <label for="role"></label>
@@ -37,12 +36,14 @@
         let tg = window.Telegram.WebApp;
         let senden = document.getElementById("send");
         tg.expand();
+       
 
-        senden.addEventListener("click", () => {
-            let name = document.getElementById('name');
-            let role = document.getElementById('role');
-            if (name.value == null || role.value == null) {
-                tg.sendMessage("Пожалуйста заполните все поля правильно!");
+        function validateForm() {
+            senden.addEventListener("click", () => {
+            let name = document.getElementById('name').value;
+            let role = document.getElementById('role').value;
+            if (name === null || role.value === null) {
+                alert("Пожалуйста заполните все поля правильно!");
                 return;
             } else {
                let empData = {
@@ -54,6 +55,8 @@
             }
             
         });  
+        }
+       
           
         </script>
 
