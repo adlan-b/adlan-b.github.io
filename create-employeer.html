@@ -23,7 +23,7 @@
                     required>
                 <label for="role"></label>
                 <select name="Roles" id="role" required>
-                    <option value>--Role--</option>
+                    <option value="">--Role--</option>
                     <option value="admin">ADMIN</option>
                     <option value="employeer">Employeer</option>
                 </select>
@@ -41,8 +41,8 @@
         senden.addEventListener("click", () => {
             let name = document.getElementById('name');
             let role = document.getElementById('role');
-            if (name.value == "" || role.value == "") {
-                tg.sendData("Пожалуйста заполните все поля правильно!");
+            if (name.value == null || role.value == null) {
+                tg.sendMessage("Пожалуйста заполните все поля правильно!");
                 return;
             } else {
                let empData = {
@@ -50,9 +50,11 @@
                role: role.value,
                }
                tg.sendData(JSON.stringify(empData));
+               tg.close();  
             }
-            tg.close();
-        });       
+            
+        });  
+          
         </script>
 
     </body>
