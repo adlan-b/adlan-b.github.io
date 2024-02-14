@@ -1,32 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="style.css" />
-    <title>Employeer page</title>
-    <script src="https://telegram.org/js/telegram-web-app.js?1"></script>
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="style.css" />
+        <title>Employeer page</title>
+        <script src="https://telegram.org/js/telegram-web-app.js?1"></script>
+    </head>
+    <body>
 
-<form id="form">
-    <section>
-        <input type="text" placeholder="Имя" id="name" maxlength=30 required>
-        <label for ="role"></label> 
-        <select name = "Roles"id = "role" required> 
-            <!-- options here -->
-        </select> 
-        <!-- button inside the form -->
-        <!-- added an ID to the form so we can access it easily in Javascript -->
+        <form id="form">
+            <section>
+                <input type="text" placeholder="Имя" id="name" maxlength=30
+                    required>
+                <label for="role"></label>
+                <select name="Roles" id="role" required>
+                    <option value>-Role_</option>
+                    <option value="ADMIN">admin</option>
+                    <option value="Employeer">employeer</option>
+                </select>
 
-        
+            </section>
+        </form>
 
-
-        
-       </section >
-   </form >
-
-<script type = "application/javascript"> 
+        <script type="application/javascript"> 
 
 document.addEventListener("DOMContentLoaded", function() {
   let tg = window.Telegram.WebApp;
@@ -55,7 +52,9 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 </script>
 
-<button id ="send">Senden</button ><!-- moved the button outside of the form -->
-<button id ="reset"type ="reset ">Back</button><!-- also moved this button outside of the form -->
+        <button
+            id="send">Senden</button><!-- moved the button outside of the form -->
+        <button id="reset"
+            type="reset ">Back</button><!-- also moved this button outside of the form -->
 
-</body >
+    </body>
