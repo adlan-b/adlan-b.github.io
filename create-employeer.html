@@ -1,64 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="style.css" />
-        <title>Employeer page</title>
-        <script src="https://telegram.org/js/telegram-web-app.js?1"></script>
-        <script>
-        function setThemeClass() {
-            document.documentElement.className = Telegram.WebApp.colorScheme;
-        }
-        Telegram.WebApp.onEvent('themeChanged', setThemeClass);
-        setThemeClass();
-    </script>
-    </head>
-    <body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <title>Employeer page</title>
+    <script src="https://telegram.org/js/telegram-web-app.js?1"></script>
+</head>
+<body>
 
-        <form id="form" onsubmit=return validateForm()>
-            <section>
-                <input type="text" placeholder="Имя" id="name" maxlength="30"
-                    required>
-                <label for="role"></label>
-                <select name="Roles" id="role" required>
-                    <option value="">--Role--</option>
-                    <option value="admin">ADMIN</option>
-                    <option value="employeer">Employeer</option>
-                </select>
+<form id="form">
+    <section>
+        <input type="text" placeholder="Имя" id="name" maxlength=30 required>
+        <label for ="role"></label> 
+        <select name = "Roles"id = "role" required> 
+            <!-- options here -->
+        </select> 
+        <!-- button inside the form -->
+        <!-- added an ID to the form so we can access it easily in Javascript -->
 
-                <button id="send">Senden</button>
-                <button id="reset" type="reset">Back</button>
-            </section>
-        </form>
+        
 
-        <script type="application/javascript">
-        let tg = window.Telegram.WebApp;
-        let senden = document.getElementById("send");
-        tg.expand();
-       
 
-        function validateForm() {
-            senden.addEventListener("click", () => {
-            let name = document.getElementById('name').value;
-            let role = document.getElementById('role').value;
-            if (name === null || role.value === null) {
-                alert("Пожалуйста заполните все поля правильно!");
-                return;
-            } else {
-               let empData = {
-               name: name.value,
-               role: role.value,
-               }
-               tg.sendData(JSON.stringify(empData));
-               
-            }
-        });  
-         tg.close(); 
-        }
-       
+        
+       </section >
+   </form >
+
+<script type = "application/javascript"> 
+
+document.addEventListener("DOMContentLoaded", function() {
+  let tg = window.Telegram.WebApp;
+  let sendButton = document.getElementById("send");
+  
+  sendButton.addEventListener("click", function(event) {
+      event.preventDefault(); // prevent default form submission
+      
+      let nameInput = document.getElementById('name');
+      let roleSelect = document.getElementById('role');
+      
+      if (nameInput.value === '' || roleSelect.value === '') {
+          alert("Please fill out all fields correctly!");
+          return;
+      } else {
+          let empData = {
+              name: nameInput.value,
+              role: roleSelect.value
+          };
           
-        </script>
+          tg.sendData(JSON.stringify(empData));
+          
+          tg.close();
+      }
+  });
+});
+</script>
 
-    </body>
-</html>
+<button id ="send">Senden</button ><!-- moved the button outside of the form -->
+<button id ="reset"type ="reset ">Back</button><!-- also moved this button outside of the form -->
+
+</body >
