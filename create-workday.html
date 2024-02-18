@@ -15,7 +15,7 @@
         <input type="date"  placeholder="Дата" id="datum" required>
         <input type="number" placeholder="Час" id="stunde" min="0" step=".01" required>
         <input type="number" placeholder="Минута" id="minute" required>
-        <button id="senden">Senden</button>
+        
     </form>
     
     
@@ -24,7 +24,7 @@
         let senden = document.getElementById("senden");
         tg.expand();
 
-        senden.addEventListener("click", () => {
+        senden.addEventListener("click", (event) => {
             let datum = document.getElementById('datum');
             let stunde = document.getElementById('stunde');
             let minute = document.getElementById('minute');
@@ -38,10 +38,11 @@
                minute: minute.value
                }
                tg.sendData(JSON.stringify(data));
+               tg.close();
             }
-            tg.close();
+           
         });       
     </script>
-
+    <button id="senden">Senden</button>
 </body>
 </html>
