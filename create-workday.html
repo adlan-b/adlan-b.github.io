@@ -13,8 +13,8 @@
     <div id="error"></div>
     <form id="form">
         <input type="date"  placeholder="Дата" id="datum" required>
-        <input type="text" placeholder="Имена" id="names" required>
-        <input type="number" placeholder="Часы" id="stunde" min="0" step=".01" required>
+        <input type="number" placeholder="Час" id="stunde" min="0" step=".01" required>
+        <input type="number" placeholder="Минута" id="minute" required>
         <button id="senden">Senden</button>
     </form>
     
@@ -26,16 +26,16 @@
 
         senden.addEventListener("click", () => {
             let datum = document.getElementById('datum');
-            let names = document.getElementById('names');
             let stunde = document.getElementById('stunde');
+            let minute = document.getElementById('minute');
             if (datum.value == "" || names.value == "" || stunde.value == "") {
-                tg.sendData("Пожалуйста заполните все поля правильно!");
+                alert("Пожалуйста заполните все поля правильно!");
                 return;
             } else {
                let data = {
                datum: datum.value,
-               names: names.value,
-               stunde: stunde.value
+               stunde: stunde.value,
+               minute: minute.value
                }
                tg.sendData(JSON.stringify(data));
             }
