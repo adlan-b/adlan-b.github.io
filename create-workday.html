@@ -4,47 +4,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="style.css" />
-    <title>Страница для ввода рабочих часов</title> 
-    <script src="https://telegram.org/js/telegram-web-app.js?1"></script>
+    <title>Страница для ввода рабочих часов</title>
+    <!-- Подключение Telegram Web App JS SDK -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 <body>
-    <h2>Добавить</h2>
 
-    <div id="error"></div>
-    <form id="form">
-        <input type="date"  placeholder="Дата" id="datum" required>
-        <input type="number" placeholder="Час" id="stunde" min="0" step=".01" required>
-        <input type="number" placeholder="Минута" id="minute" required>
-        <button id="senden">Senden</button>
-    </form>
-    
-    
-    <script type="application/javascript">
-        document.addEventListener("DOMContentLoaded", function() {        
-        let tg = window.Telegram.WebApp;
-        let senden = document.getElementById('senden');
+<h2>Добавить рабочее время</h2>
 
-        senden.addEventListener("click", (event) => {
-            let datum = document.getElementById('datum');
-            let stunde = document.getElementById('stunde');
-            let minute = document.getElementById('minute');
-            if (datum.value === "" || names.value === "" || stunde.value === "") {
-                alert("Пожалуйста заполните все поля правильно!");
-                return;
-            } else {
-               let data = {
-                   datum: datum.value,
-                   stunde: stunde.value,
-                   minute: minute.value
-               };
-               tg.sendData(JSON.stringify(data));
-               tg.close();
-            }
-           
-        });
-        
-    });
-    </script>
-    
-</body>
-</html>
+<div id="error"></div>
+
+<form id="workHoursForm">
+    <input type="date" placeholder="Дата" id="datum" required>
+    <input type='number' placeholder='Час' id='stunde' min='0' max='23' required>
+    <input type='number' placeholder='Минута' id='minute' min='0' max ='59'step ='1'required >
+    <button type ="button"id ="senden">Отправить</button>
+</form>
+
+<script type = "application/javascript"> 
+document.addEventListener("DOMContentLoaded", function() {
+   let tg = window.Telegram.WebApp;
+   
+   let form = document.getElementById('workHoursForm');
+   let sendButton = document.getElementById('senden');
+
+ 
+   sendButton.addEventListener("click", function(event) {
+       event.preventDefault(); // Предотвратим автоматическую отправку формы
+
+       let datum = document.getElementById('datum').value;
+       let stunde = document.getElementById('stunde').value;
+       let minute = document.getElementById('minute').value;
+
+       if (!datum || !stunde || !minute) {
+           alert("Пожалуйста заполните все поля правильно!");
+           return;
+       }
+
+      let data ={
+          datum: datum,
+          stunde: parseInt(stunde),
+          minute: parseInt(minute)
+      };
+      
+      tg.sendData(JSON.stringify(data));
+      
+      tg.close(); 
+   });
+});
+</script> 
+
+ </body> 
+ </html > 
