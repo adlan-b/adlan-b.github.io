@@ -20,6 +20,7 @@
     
     
     <script type="application/javascript">
+        document.addEventListener("DOMContentLoaded", function() {        
         let tg = window.Telegram.WebApp;
         let senden = document.getElementById("senden");
         tg.expand();
@@ -28,7 +29,7 @@
             let datum = document.getElementById('datum');
             let stunde = document.getElementById('stunde');
             let minute = document.getElementById('minute');
-            if (datum.value == "" || names.value == "" || stunde.value == "") {
+            if (datum.value === "" || names.value === "" || stunde.value === "") {
                 alert("Пожалуйста заполните все поля правильно!");
                 return;
             } else {
@@ -41,7 +42,9 @@
                tg.close();
             }
            
-        });       
+        });
+        
+    });
     </script>
     <button id="senden">Senden</button>
 </body>

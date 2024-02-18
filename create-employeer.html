@@ -23,12 +23,12 @@
 
         <script type="application/javascript"> 
 
-document.addEventListener("DOMContentLoaded", function() {
-  let tg = window.Telegram.WebApp;
-  let sendButton = document.getElementById("send");
+        document.addEventListener("DOMContentLoaded", function() {
+        let tg = window.Telegram.WebApp;
+        let sendButton = document.getElementById("send");
   
-  sendButton.addEventListener("click", function(event) {
-      event.preventDefault(); // prevent default form submission
+       sendButton.addEventListener("click", function(event) {
+         event.preventDefault(); // prevent default form submission
       
       let nameInput = document.getElementById('name');
       let roleSelect = document.getElementById('role');
