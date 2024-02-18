@@ -34,10 +34,10 @@
                 return;
             } else {
                let data = {
-               datum: datum.value,
-               stunde: stunde.value,
-               minute: minute.value
-               }
+                   datum: datum.value,
+                   stunde: stunde.value,
+                   minute: minute.value
+               };
                tg.sendData(JSON.stringify(data));
                tg.close();
             }
