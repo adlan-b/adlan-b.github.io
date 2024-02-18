@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="style.css" />
-    <title>Страница для ввода рабочих часов на день</title> 
+    <title>Страница для ввода рабочих часов</title> 
     <script src="https://telegram.org/js/telegram-web-app.js?1"></script>
 </head>
 <body>
@@ -15,7 +15,7 @@
         <input type="date"  placeholder="Дата" id="datum" required>
         <input type="number" placeholder="Час" id="stunde" min="0" step=".01" required>
         <input type="number" placeholder="Минута" id="minute" required>
-        
+        <button id="senden">Senden</button>
     </form>
     
     
@@ -45,6 +45,6 @@
         
     });
     </script>
-    <button id="senden">Senden</button>
+    
 </body>
 </html>
