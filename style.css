@@ -110,6 +110,20 @@ input[type="text"]:-ms-input-placeholder {
 .input[data-placeholder] {
     position: relative;
 }
+
+#workHoursForm {
+  display: flex;
+  flex-direction: column; /* Stack elements vertically */
+
+}
+
+.form-group {
+  margin-bottom: .5rem; /* Space between form groups */
+}
+
+#senden {
+  margin-top: .5rem; /* Space above button */
+}
 .input[data-placeholder]:empty:before {
     position: absolute;
     left: 0;
@@ -124,13 +138,27 @@ input[type="text"]:-ms-input-placeholder {
     pointer-events: none;
     z-index: -1;
 }
+
+input[type="number"] {
+    margin-top: 5px;
+}
+
 section {
+
+    justify-content: center;
+    border: black 2px solid;
+    padding: 15px;
+    
+}
+
+
+/* section {
     margin: 0, auto;
     padding: 15px;
     border: black 2px solid;
     text-align: center;
     background-color: var(--bg-color, #fffffc);
-}
+} */
 section#top_sect {
     background-color: var(--tg-theme-bg-color, #ffffff);
 }
