@@ -33,26 +33,32 @@
 
  
            sendButton.addEventListener("click", function(event) {
-       event.preventDefault(); // Предотвратим автоматическую отправку формы
+           event.preventDefault(); // Предотвратим автоматическую отправку формы
 
        let datum = document.getElementById('datum').value;
        let stunde = document.getElementById('stunde').value;
        let minute = document.getElementById('minute').value;
 
-       if (!datum || !stunde || !minute) {
-           alert("Пожалуйста заполните все поля правильно!");
-           return;
-       }
-
-      let data ={
+       if (form.checkValidity()) {
+        let data = {
           datum: datum,
           stunde: parseInt(stunde),
           minute: parseInt(minute)
-      };
+        };
+
+       alert("Данные отправленны"); 
       
-      tg.sendData(JSON.stringify(data));
-      
-      tg.close(); 
+       tg.sendData(JSON.stringify(data));
+       tg.close(); 
+          
+       } else {
+
+         form.reportValidity();
+         alert("Заполните поля правильно")
+         return;
+
+       } 
+     
    });
 });
 </script>
